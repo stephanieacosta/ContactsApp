@@ -1,0 +1,137 @@
+/* Navbar */
+.headernav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 40px;
+  box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.3);
+}
+
+.imgnav {
+  width: 200px;
+  height: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+}
+
+.nav-links {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  gap: 40px;
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+  }
+}
+
+.imgnav2 {
+  padding-top: 8px;
+  margin-left: 40px;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Title */
+.title-container {
+  position: relative;
+  font-size: 34px;
+  font-weight: 500;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  height: 40px;
+  margin-top: 60px;
+  padding: 0px 40px;
+
+  div {
+    height: 3px;
+    flex: 1;
+    width: 100%;
+    background-color: #c1d72f;
+    margin-top: 5px;
+    border-radius: 50px;
+  }
+}
+
+/* Card */
+.card {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.3);
+  padding: 2rem;
+  border-radius: 0.25rem;
+
+  p {
+    text-align: center;
+  }
+
+  .fullname {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    gap: 5px;
+  }
+  .email {
+    color: gray;
+  }
+  .divisor {
+    height: 2px;
+    width: 80%;
+    background-color: gray;
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 5px;
+  }
+  .circle {
+    border: 5px solid #c1d72f;
+  }
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+
+/* Button */
+
+.button {
+  cursor: pointer;
+  display: flex;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  transition: 0.3s ease-in-out;
+  align-items: center;
+  justify-content: center;
+  border-width: 1px;
+  border-style: solid;
+  background-color: transparent;
+  &.button-success {
+    border-color: #c1d72f;
+    color: #c1d72f;
+    &:hover {
+      background-color: #a3b71f;
+      color: white;
+    }
+  }
+  &.button-danger {
+    border-color: #ff0000;
+    color: #ff0000;
+    &:hover {
+      background-color: #ff0000;
+      color: white;
+    }
+  }
+}
