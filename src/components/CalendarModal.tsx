@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "react-modal";
-import { onCloseDateModal, onOpenDateModal } from "../context/slices/uiSlice";
+import { onCloseDateModal } from "../context/slices/uiSlice";
 import { createContact } from "../context/slices/contactsSlice";
 import { type Store } from "../context/store";
 
