@@ -36,6 +36,30 @@ export const RubbishBinIcon = (props: SVGProps<SVGSVGElement>) => (
 export const DeleteIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    width={15}
+    height={20}
+    viewBox="0 0 24 24"
+    fill="none"
+    {...props}
+  >
+    <g clipPath="url(#a)">
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M1.205 1.21 0 2.414l4.793 4.793L9.586 12l-4.793 4.793L0 21.586l1.205 1.204a171.29 171.29 0 0 0 1.21 1.205c.004 0 2.161-2.156 4.796-4.79L12 14.415l4.79 4.79c2.634 2.634 4.791 4.79 4.795 4.79.003 0 .548-.542 1.21-1.205L24 21.586l-4.793-4.793L14.414 12l4.793-4.793L24 2.414l-1.207-1.207L21.586 0l-4.793 4.793L12 9.586l-4.79-4.79C4.575 2.16 2.417.005 2.414.005c-.003 0-.547.541-1.21 1.204Z"
+        clipRule="evenodd"
+      />
+    </g>
+    <defs>
+      <clipPath id="a">
+        <path d="M0 0h24v24H0z" />
+      </clipPath>
+    </defs>
+  </svg>
+);
+export const DeleteIcon2 = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={24}
     height={24}
     viewBox="0 0 24 24"

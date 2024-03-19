@@ -43,9 +43,14 @@ p {
   text-wrap: pretty;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .cardlist {
   display: grid;
   gap: 40px;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   padding: 50px 50px 25px;
 }

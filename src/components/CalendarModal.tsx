@@ -5,17 +5,6 @@ import { onCloseDateModal, onOpenDateModal } from "../context/slices/uiSlice";
 import { createContact } from "../context/slices/contactsSlice";
 import { type Store } from "../context/store";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
-
 Modal.setAppElement("#root");
 
 export const CalendarModal = () => {
@@ -26,13 +15,16 @@ export const CalendarModal = () => {
     first_name: "",
     last_name: "",
     email: "",
+    favorite: false,
+    avatar: "/avatarglobant.png",
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const field = e.currentTarget.getAttribute("name")!;
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
     setFormValues({
       ...formValues,
-      [field]: e.currentTarget.value,
+      [name]: newValue,
     });
   };
 
@@ -51,19 +43,27 @@ export const CalendarModal = () => {
       body: JSON.stringify(formValues),
     }).then((r) => r.json());
 
-    // TODO:
     dispatch(createContact(data));
     dispatch(onCloseDateModal());
+
+    setFormValues({
+      first_name: "",
+      last_name: "",
+      email: "",
+      favorite: false,
+      avatar: "/avatarglobant.png",
+    });
   };
 
   return (
     <Modal
       isOpen={isDateModalOpen}
-      onRequestClose={() => dispatch(onCloseDateModal())}
-      style={customStyles}
+      onRequestClose={() => {
+        dispatch(onCloseDateModal());
+      }}
+      className="formmodal"
     >
-      <form onSubmit={handleSubmit}>
-        <label>First Name:</label>
+      <form onSubmit={handleSubmit} className="form">
         <input
           type="text"
           name="first_name"
@@ -72,7 +72,6 @@ export const CalendarModal = () => {
           placeholder="First Name"
           autoFocus
         />
-        <label>Last Name:</label>
         <input
           type="text"
           name="last_name"
@@ -81,7 +80,6 @@ export const CalendarModal = () => {
           placeholder="Last Name"
           autoFocus
         />
-        <label>Email:</label>
         <input
           type="email"
           name="email"
@@ -90,7 +88,16 @@ export const CalendarModal = () => {
           placeholder="Email"
           autoFocus
         />
-        <button type="submit">Submit</button>
+        <div className="div-favorites">
+          <label> Enable like favorite</label>
+          <input
+            type="checkbox"
+            name="favorite"
+            onChange={handleChange}
+            checked={formValues.favorite}
+          />
+        </div>
+        <button type="submit">SAVE</button>
       </form>
     </Modal>
   );

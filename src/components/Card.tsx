@@ -22,7 +22,7 @@ function Card({
         <p>{first_name}</p>
         <p>{last_name}</p>
       </div>
-      <p>favorite: {favorite ? "Si" : "No"}</p>
+      {/* <p>favorite: {favorite ? "Si" : "No"}</p> */}
       <p className="email">{email}</p>
       <div className="divisor"></div>
       {children}

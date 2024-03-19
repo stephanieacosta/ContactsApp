@@ -1,11 +1,9 @@
-import CardList from "../components/CardList";
 import Title from "../components/Title";
 import { useApi } from "../hooks/useApi";
 import { useSelector, useDispatch } from "react-redux";
 import { type Store } from "../context/store";
 import {
   createInitialState,
-  deleteContact,
   toggleFavorite,
 } from "../context/slices/contactsSlice";
 import Button from "../components/Button";
@@ -47,6 +45,7 @@ function OverviewPage() {
         <div className="cardlist">
           {cState.contacts
             .filter((contact) => !contact.favorite)
+            .slice(0, 6)
             .map((contact) => (
               <Card key={contact.id} {...contact}>
                 <Button

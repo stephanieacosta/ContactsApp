@@ -1,31 +1,89 @@
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { onOpenDateModal } from "../context/slices/uiSlice";
+import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
+import { useState } from "react";
 
 function Nav() {
   const dispatch = useDispatch();
+  const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
     <header className="headernav">
       <figure className="imgnav">
-        <img src="\GlobantLogo.png" />
+        <img src="\GlobantLogo.png" alt="Logo" />
       </figure>
       <nav role="navigation">
         <ul className="nav-links">
           <li>
-            <Link to="/">Overview</Link>
+            <NavLink to="/" exact activeClassName="active">
+              Overview
+            </NavLink>
           </li>
           <li>
-            <Link to="/contacts">Contacts</Link>
+            <NavLink to="/contacts" activeClassName="active">
+              Contacts
+            </NavLink>
           </li>
-          <li>
-            <Link to="/favorites">Favorites</Link>
+          <li style={{ marginRight: "1.2rem" }}>
+            <NavLink to="/favorites" activeClassName="active">
+              Favorites
+            </NavLink>
           </li>
         </ul>
       </nav>
-      <button className="imgnav2" onClick={() => dispatch(onOpenDateModal())}>
-        <img src="\globantbutton.png" />
+      <button
+        className="button-nav"
+        onClick={() => dispatch(onOpenDateModal())}
+      >
+        <img
+          src="/iconadd.png"
+          className="button-content1"
+          alt="Add IconS"
+        ></img>
+        <span className="button-content2">NEW</span>
       </button>
+
+      <div className="navbar-menu">
+        {toggleMenu ? (
+          <RiCloseLine
+            color="black"
+            size={27}
+            onClick={() => setToggleMenu(false)}
+          />
+        ) : (
+          <RiMenu3Line
+            color="black"
+            size={27}
+            onClick={() => setToggleMenu(true)}
+          />
+        )}
+        {toggleMenu && (
+          <div className="navbar-menu_container">
+            <div className="navbar-menu_container-links">
+              <nav>
+                <ul>
+                  <li>
+                    <NavLink to="/" exact activeClassName="active">
+                      Overview
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/contacts" activeClassName="active">
+                      Contacts
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/favorites" activeClassName="active">
+                      Favorites
+                    </NavLink>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        )}
+      </div>
     </header>
   );
 }
