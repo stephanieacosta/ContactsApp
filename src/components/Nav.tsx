@@ -16,17 +16,27 @@ function Nav() {
       <nav role="navigation">
         <ul className="nav-links">
           <li>
-            <NavLink to="/" exact activeClassName="active">
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "")}
+              end
+            >
               Overview
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contacts" activeClassName="active">
+            <NavLink
+              to="/contacts"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
               Contacts
             </NavLink>
           </li>
           <li style={{ marginRight: "1.2rem" }}>
-            <NavLink to="/favorites" activeClassName="active">
+            <NavLink
+              to="/favorites"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
               Favorites
             </NavLink>
           </li>
@@ -64,17 +74,27 @@ function Nav() {
               <nav>
                 <ul>
                   <li>
-                    <NavLink to="/" exact activeClassName="active">
+                    <NavLink
+                      to="/"
+                      className={({ isActive }) => (isActive ? "active" : "")}
+                      end
+                    >
                       Overview
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/contacts" activeClassName="active">
+                    <NavLink
+                      to="/contacts"
+                      className={({ isActive }) => (isActive ? "active" : "")}
+                    >
                       Contacts
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/favorites" activeClassName="active">
+                    <NavLink
+                      to="/favorites"
+                      className={({ isActive }) => (isActive ? "active" : "")}
+                    >
                       Favorites
                     </NavLink>
                   </li>

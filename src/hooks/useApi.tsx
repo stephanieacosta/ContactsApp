@@ -24,7 +24,6 @@ export const useApi = () => {
 
       for (const result of settle) {
         if (result.status === "fulfilled") {
-          console.log({ data: result.value });
           setContacts((prev) => [...prev, ...result.value]);
         }
       }

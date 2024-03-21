@@ -32,8 +32,10 @@ export const CalendarModal = () => {
     event.preventDefault();
 
     if (formValues.first_name.length <= 0) return;
+    if (formValues.last_name.length <= 0) return;
+    if (formValues.email.length <= 0) return;
 
-    const url = `https://reqres.in/api/create`;
+    const url = `https://reqres.in/api/users`;
 
     const { createdAt, ...data } = await fetch(url, {
       method: "POST",

@@ -9,16 +9,18 @@ import {
 import Button from "../components/Button";
 import { DeleteIcon, HeartIcon } from "../icons/icons";
 import Card from "../components/Card";
+import { useEffect } from "react";
 
 function OverviewPage() {
   const { contacts } = useApi();
-  console.log({ contacts: contacts.length });
   const cState = useSelector((state: Store) => state.contacts);
   const dispatch = useDispatch();
 
-  if (!cState.contacts.length && contacts.length) {
-    dispatch(createInitialState(contacts));
-  }
+  useEffect(() => {
+    if (!cState.contacts.length && contacts.length) {
+      dispatch(createInitialState(contacts));
+    }
+  }, [cState.contacts, contacts, dispatch]);
 
   return (
     <div>
