@@ -1,17 +1,20 @@
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { onOpenDateModal } from "../context/slices/uiSlice";
+import { onOpenDateModal } from "../redux/slices/uiSlice";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import { useState } from "react";
 
-function Nav() {
+function Nav({ darkMode }: { darkMode: boolean }) {
   const dispatch = useDispatch();
   const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
     <header className="headernav">
       <figure className="imgnav">
-        <img src="\GlobantLogo.png" alt="Logo" />
+        <img
+          src={darkMode ? "/GlobantLogo2.png" : "/GlobantLogo.png"}
+          alt="Logo"
+        />
       </figure>
       <nav role="navigation">
         <ul className="nav-links">

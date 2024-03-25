@@ -1,5 +1,5 @@
 import Card from "./Card";
-import type { IContact } from "../context/slices/contactsSlice";
+import type { IContact } from "../redux/slices/contactsSlice";
 
 interface ICardList {
   contactsArr: IContact["contacts"];

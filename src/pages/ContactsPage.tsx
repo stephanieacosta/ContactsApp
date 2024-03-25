@@ -1,20 +1,19 @@
 import Title from "../components/Title";
 import { useApi } from "../hooks/useApi";
 import { useSelector, useDispatch } from "react-redux";
-import { type Store } from "../context/store";
+import { type Store } from "../redux/store";
 import {
   createInitialState,
   deleteContact,
   toggleFavorite,
-} from "../context/slices/contactsSlice";
+} from "../redux/slices/contactsSlice";
 import Button from "../components/Button";
 import { DeleteIcon2, HeartIcon, RubbishBinIcon } from "../icons/icons";
 import Card from "../components/Card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function ContactsPage() {
   const { contacts } = useApi();
-  console.log({ contacts: contacts.length });
   const cState = useSelector((state: Store) => state.contacts);
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1); // o en 0
@@ -37,9 +36,11 @@ function ContactsPage() {
     }
   };
 
-  if (!cState.contacts.length && contacts.length) {
-    dispatch(createInitialState(contacts));
-  }
+  useEffect(() => {
+    if (!cState.contacts.length && contacts.length) {
+      dispatch(createInitialState(contacts));
+    }
+  }, [cState.contacts, contacts, dispatch]);
 
   return (
     <div>

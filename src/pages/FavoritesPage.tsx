@@ -1,15 +1,15 @@
 import Title from "../components/Title";
 import { useApi } from "../hooks/useApi";
 import { useSelector, useDispatch } from "react-redux";
-import { type Store } from "../context/store";
+import { type Store } from "../redux/store";
 import {
   createInitialState,
   toggleFavorite,
-} from "../context/slices/contactsSlice";
+} from "../redux/slices/contactsSlice";
 import Button from "../components/Button";
 import { DeleteIcon } from "../icons/icons";
 import Card from "../components/Card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function FavoritesPage() {
   const { contacts } = useApi();
@@ -37,9 +37,11 @@ function FavoritesPage() {
     }
   };
 
-  if (!cState.contacts.length && contacts.length) {
-    dispatch(createInitialState(contacts));
-  }
+  useEffect(() => {
+    if (!cState.contacts.length && contacts.length) {
+      dispatch(createInitialState(contacts));
+    }
+  }, [cState.contacts, contacts, dispatch]);
 
   return (
     <div>
