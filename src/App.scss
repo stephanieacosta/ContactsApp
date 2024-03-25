@@ -11,10 +11,24 @@
 }
 
 .dark-mode {
-  background-color: #1f1f1f; /* Color de fondo oscuro */
   color: #fff; /* Color de texto en modo oscuro */
+  min-height: 100vh; 
+  min-width: 100vw;
+  background-color: #1f1f1f; /* Color de fondo oscuro */ 
   .nav-links a {
     color: #fff; /* Color de texto en modo oscuro */
+  }
+  #root {
+    background-color: #1f1f1f;
+  }
+  .pagination {
+    margin-bottom: 0;
+    padding-bottom: 3rem;
+    border-bottom: transparent;
+  }
+  .pagination button {
+    background-color: #1f1f1f;
+    color: white;
   }
   .nav-links .active {
     color: #c1d72f;

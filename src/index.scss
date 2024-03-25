@@ -54,3 +54,8 @@ a {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   padding: 50px 50px 25px;
 }
+
+html, body, #root {
+  min-height: 100vh; 
+  min-width: 100vw; 
+}
