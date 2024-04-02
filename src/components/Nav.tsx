@@ -60,13 +60,13 @@ function Nav({ darkMode }: { darkMode: boolean }) {
       <div className="navbar-menu">
         {toggleMenu ? (
           <RiCloseLine
-            color="black"
+            color={darkMode ? "white" : "black"}
             size={27}
             onClick={() => setToggleMenu(false)}
           />
         ) : (
           <RiMenu3Line
-            color="black"
+            color={darkMode ? "white" : "black"}
             size={27}
             onClick={() => setToggleMenu(true)}
           />
