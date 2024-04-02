@@ -7,7 +7,7 @@ import { type Store } from "../redux/store";
 
 Modal.setAppElement("#root");
 
-export const CalendarModal = () => {
+export const ContactModal = () => {
   const { isDateModalOpen } = useSelector((state: Store) => state.ui);
   const dispatch = useDispatch();
 
@@ -37,15 +37,23 @@ export const CalendarModal = () => {
 
     const url = `https://reqres.in/api/users`;
 
-    const { createdAt, ...data } = await fetch(url, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(formValues),
-    }).then((r) => r.json());
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(formValues),
+      });
 
-    dispatch(createContact(data));
+      const data = await response.json();
+      const { createdAt, ...restData } = data;
+
+      dispatch(createContact(restData));
+    } catch (error) {
+      console.error("Error:", error);
+    }
+
     dispatch(onCloseDateModal());
 
     setFormValues({

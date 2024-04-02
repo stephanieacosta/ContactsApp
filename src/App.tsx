@@ -5,7 +5,7 @@ import Nav from "./components/Nav";
 import OverviewPage from "./pages/OverviewPage";
 import ContactsPage from "./pages/ContactsPage";
 import FavoritesPage from "./pages/FavoritesPage";
-import { CalendarModal } from "./components/CalendarModal";
+import { ContactModal } from "./components/ContactModal";
 import { useApi } from "./hooks/useApi";
 
 function App() {
@@ -48,7 +48,7 @@ function App() {
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/contacts" element={<ContactsPage />} />
         </Routes>
-        <CalendarModal />
+        <ContactModal />
       </BrowserRouter>
     </div>
   );

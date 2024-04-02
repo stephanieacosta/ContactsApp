@@ -19,27 +19,26 @@ const contactsSlice = createSlice({
   name: "contacts",
   initialState,
   reducers: {
-    // contacts reducers
     createInitialState: (state, action) => {
-      // generate random quantity of possible favorite contacts
+      // generar cantidad aleatoria de contactos favoritos posibles
       const maxFavorites = 4;
       const ids = new Set<number>();
 
-      // take the id's of the contacts to be marked as favorite
+      // tomar los id's de los contactos para marcarlos como favorito
       while (ids.size < maxFavorites) {
         const index = Math.floor(Math.random() * action.payload.length);
         const { id } = action.payload[index];
         ids.add(id);
       }
 
-      // generate the initialState with the favorite random favorite field
+      // generar el estadoInicial con el campo de favorito aleatoriamente
       const newInitialState: IContact["contacts"] = action.payload.map(
         (c: IContact["contacts"][0]) => {
           return { ...c, favorite: ids.has(c.id) };
         }
       );
 
-      // create the initialState
+      // crear el estadoInicial
       state.contacts = [...newInitialState].sort((a, b) =>
         a.first_name.localeCompare(b.first_name)
       );
@@ -49,15 +48,6 @@ const contactsSlice = createSlice({
         { favorite: false, ...action.payload },
         ...state.contacts,
       ].sort((a, b) => a.first_name.localeCompare(b.first_name));
-    },
-    updateContact: (state, action) => {
-      const newState = state.contacts.map((contact) =>
-        contact.id === action.payload.id
-          ? { ...contact, ...action.payload }
-          : contact
-      );
-
-      state.contacts = newState;
     },
     deleteContact: (state, action) => {
       state.contacts = state.contacts.filter(
@@ -81,7 +71,6 @@ const contactsSlice = createSlice({
 
 export const {
   createContact,
-  updateContact,
   deleteContact,
   createInitialState,
   toggleFavorite,
