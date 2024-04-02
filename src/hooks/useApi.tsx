@@ -14,7 +14,7 @@ export const useApi = () => {
 
   useEffect(() => {
     const fetchData = async (page: 1 | 2) => {
-      setLoading(true); // Set loading to true before fetching data
+      setLoading(true); // Loading en true antes del fetching data
       try {
         const response = await fetch(
           `https://reqres.in/api/users?page=${page}`
@@ -24,12 +24,12 @@ export const useApi = () => {
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {
-        setLoading(false); // Set loading to false regardless of success or failure
+        setLoading(false); // Loading en falso independientemente del éxito o fallo
       }
     };
 
     const getData = async () => {
-      setLoading(true); // Set loading to true before fetching data
+      setLoading(true); // Loading en true antes del fetching data
       try {
         const promises = [fetchData(1), fetchData(2)];
         const settle = await Promise.allSettled(promises);
@@ -43,12 +43,12 @@ export const useApi = () => {
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {
-        setLoading(false); // Set loading to false once all data is fetched or if an error occurs
+        setLoading(false); // Loading en falso cuando toda la data está recibida o si ocurre un error
       }
     };
 
     getData();
   }, []);
 
-  return { contacts, loading }; // Return loading state along with contacts
+  return { contacts, loading }; // Retornar el estado de contacts y loading
 };
