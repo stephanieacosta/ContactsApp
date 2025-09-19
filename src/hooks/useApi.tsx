@@ -55,5 +55,5 @@ export const useApi = () => {
     getData();
   }, []);
 
-  return { contacts, loading }; // Retornar el estado de contacts y loading
+  return { contacts, loading }; // Retornar el estado de contacts y de loading
 };
