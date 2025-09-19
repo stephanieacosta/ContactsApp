@@ -17,7 +17,12 @@ export const useApi = () => {
       setLoading(true); // Loading en true antes del fetching data
       try {
         const response = await fetch(
-          `https://reqres.in/api/users?page=${page}`
+          `https://reqres.in/api/users?page=${page}`,
+          {
+            headers: {
+              "x-api-key": "reqres-free-v1",
+            },
+          }
         );
         const { data } = await response.json();
         return data;
