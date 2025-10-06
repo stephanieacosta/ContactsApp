@@ -42,6 +42,7 @@ export const ContactModal = () => {
         method: "POST",
         headers: {
           "content-type": "application/json",
+          "x-api-key": "reqres-free-v1",
         },
         body: JSON.stringify(formValues),
       });
